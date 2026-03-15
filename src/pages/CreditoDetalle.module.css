@@ -1,0 +1,16 @@
+.back { background: none; border: none; color: var(--text-muted); font-size: 13px; margin-bottom: 20px; padding: 0; transition: color var(--transition); }
+.back:hover { color: var(--text-primary); }
+.hero { display: flex; justify-content: space-between; align-items: flex-start; background: linear-gradient(135deg, var(--gray-750), var(--gray-700)); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 24px 28px; margin-bottom: 20px; }
+.heroLabel { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; margin-bottom: 6px; }
+.heroAmount { font-size: 32px; font-weight: 800; color: var(--color-primary); }
+.heroClient { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.summaryGrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+.progress { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 20px; }
+.progressTop { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+.bar { height: 6px; background: var(--gray-600); border-radius: 3px; overflow: hidden; }
+.barFill { height: 100%; background: linear-gradient(90deg, var(--color-terciary), var(--color-primary)); border-radius: 3px; transition: width .6s ease; }
+.tabs { display: flex; gap: 4px; background: var(--bg-surface); border-radius: var(--radius-md); padding: 4px; margin-bottom: 16px; width: fit-content; }
+.tab { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 8px; transition: all var(--transition); }
+.tab:hover { color: var(--text-primary); }
+.tabActive { background: var(--bg-elevated); color: var(--color-primary) !important; }
+@media (max-width: 900px) { .summaryGrid { grid-template-columns: repeat(2,1fr); } }
