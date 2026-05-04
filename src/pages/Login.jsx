@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, forwardRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth, LOGIN_STEP } from '../context/AuthContext'
+import HexLogo from '../components/HexLogo'
 import styles from './Login.module.css'
 
 const TIPOS = ['CC', 'CE', 'NIT', 'TI', 'PP']
@@ -16,9 +17,9 @@ export default function Login() {
     if (user) navigate('/dashboard', { replace: true })
   }, [user])
 
-  const logoutReason = sessionStorage.getItem('kp_logout_reason')
+  const logoutReason = sessionStorage.getItem('nvx_logout_reason')
   useEffect(() => {
-    return () => sessionStorage.removeItem('kp_logout_reason')
+    return () => sessionStorage.removeItem('nvx_logout_reason')
   }, [])
 
   return (
@@ -220,13 +221,8 @@ function StepDot({ n, active, done }) {
 function Logo() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-      <span style={{
-        width: 38, height: 38, background: 'var(--color-primary)',
-        color: 'var(--gray-900)', borderRadius: 10,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontWeight: 900, fontSize: 20, flexShrink: 0,
-      }}>K</span>
-      <span style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em' }}>keypago</span>
+      <HexLogo size={38} />
+      <span style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em' }}>Nóvex</span>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import HexLogo from './HexLogo'
 import styles from './Layout.module.css'
 
 const NAV = [
@@ -63,8 +64,8 @@ export default function Layout() {
       <header className={styles.header}>
         {/* Logo — independiente del menu */}
         <div className={styles.logo}>
-          <span className={styles.logoIcon}>K</span>
-          <span className={styles.logoText}>keypago</span>
+          <HexLogo size={30} />
+          <span className={styles.logoText}>Nóvex</span>
         </div>
 
         <span className={styles.pageTitle}>{pageTitle}</span>
@@ -133,8 +134,8 @@ export default function Layout() {
 
         {/* Logo — solo visible en desktop dentro del sidebar */}
         <div className={styles.sidebarLogo}>
-          <span className={styles.logoIcon}>K</span>
-          <span className={styles.logoText}>keypago</span>
+          <HexLogo size={30} />
+          <span className={styles.logoText}>Nóvex</span>
         </div>
 
         {/* Links de navegacion */}

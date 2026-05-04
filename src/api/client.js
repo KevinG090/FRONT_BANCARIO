@@ -31,7 +31,7 @@ async function request(method, path, body = null) {
 
   if (!isPublic && !isTokenValid()) {
     clearToken()
-    window.dispatchEvent(new CustomEvent('keypago:session-expired'))
+    window.dispatchEvent(new CustomEvent('novex:session-expired'))
     throw new Error('Sesion expirada.')
   }
 
@@ -50,7 +50,7 @@ async function request(method, path, body = null) {
 
   if (res.status === 401) {
     clearToken()
-    window.dispatchEvent(new CustomEvent('keypago:session-expired'))
+    window.dispatchEvent(new CustomEvent('novex:session-expired'))
     throw new Error('No autorizado.')
   }
 

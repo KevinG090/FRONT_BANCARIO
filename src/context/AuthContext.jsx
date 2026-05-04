@@ -8,7 +8,7 @@
 //  *   sessionStorage se borra al cerrar la pestana, a diferencia de localStorage.
 //  * - Detector de inactividad: si el usuario no interactua en INACTIVITY_TIMEOUT_MINUTES,
 //  *   se cierra la sesion automaticamente.
-//  * - El evento keypago:session-expired (disparado por el cliente HTTP) tambien
+//  * - El evento novex:session-expired (disparado por el cliente HTTP) tambien
 //  *   cierra la sesion.
 //  */
 
@@ -19,7 +19,7 @@
 // const INACTIVITY_MS =
 //   (Number(import.meta.env.VITE_INACTIVITY_TIMEOUT_MINUTES) || 10) * 60 * 1000
 
-// const SESSION_KEY = 'kp_session' // solo nombre + id, nunca el token
+// const SESSION_KEY = 'nvx_session' // solo nombre + id, nunca el token
 
 // const AuthContext = createContext(null)
 
@@ -66,8 +66,8 @@
 //   // Escuchar expiracion de token desde el cliente HTTP
 //   useEffect(() => {
 //     const handler = () => logout('token-expirado')
-//     window.addEventListener('keypago:session-expired', handler)
-//     return () => window.removeEventListener('keypago:session-expired', handler)
+//     window.addEventListener('novex:session-expired', handler)
+//     return () => window.removeEventListener('novex:session-expired', handler)
 //   }, [])
 
 //   async function login(tipo, numero) {
@@ -95,11 +95,11 @@
 //     setUser(null)
 //     if (reason === 'inactividad') {
 //       // El componente de login mostrara este mensaje
-//       sessionStorage.setItem('kp_logout_reason', 'inactividad')
+//       sessionStorage.setItem('nvx_logout_reason', 'inactividad')
 //     } else if (reason === 'token-expirado') {
-//       sessionStorage.setItem('kp_logout_reason', 'sesion-expirada')
+//       sessionStorage.setItem('nvx_logout_reason', 'sesion-expirada')
 //     } else {
-//       sessionStorage.removeItem('kp_logout_reason')
+//       sessionStorage.removeItem('nvx_logout_reason')
 //     }
 //   }
 
@@ -126,7 +126,7 @@ import { authApi } from '../api/client'
 const INACTIVITY_MS =
   (Number(import.meta.env.VITE_INACTIVITY_TIMEOUT_MINUTES) || 10) * 60 * 1000
 
-const SESSION_KEY = 'kp_session'
+const SESSION_KEY = 'nvx_session'
 
 // Pasos del login
 // 'identificacion' -> 'otp' -> autenticado
@@ -183,8 +183,8 @@ export function AuthProvider({ children }) {
   // Escuchar token expirado desde el cliente HTTP
   useEffect(() => {
     const handler = () => logout('token-expirado')
-    window.addEventListener('keypago:session-expired', handler)
-    return () => window.removeEventListener('keypago:session-expired', handler)
+    window.addEventListener('novex:session-expired', handler)
+    return () => window.removeEventListener('novex:session-expired', handler)
   }, [])
 
   // ── Paso 1: Solicitar OTP ────────────────────────────────────────────────────
@@ -243,11 +243,11 @@ export function AuthProvider({ children }) {
     setLoginStep(LOGIN_STEP.IDENTIFICACION)
     setOtpInfo(null)
     if (reason === 'inactividad')
-      sessionStorage.setItem('kp_logout_reason', 'inactividad')
+      sessionStorage.setItem('nvx_logout_reason', 'inactividad')
     else if (reason === 'token-expirado')
-      sessionStorage.setItem('kp_logout_reason', 'sesion-expirada')
+      sessionStorage.setItem('nvx_logout_reason', 'sesion-expirada')
     else
-      sessionStorage.removeItem('kp_logout_reason')
+      sessionStorage.removeItem('nvx_logout_reason')
   }
 
   return (
