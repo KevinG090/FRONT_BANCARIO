@@ -97,13 +97,16 @@ export const clientesApi = {
 export const cuposApi = {
   porCliente: (cid)    => request('GET', `/cupos/cliente/${cid}`),
   obtener:    (cupoId) => request('GET', `/cupos/${cupoId}`),
+  movimientos:  (cupoId, limite = 50, offset = 0) =>
+    request('GET', `/cupos/${cupoId}/movimientos?limite=${limite}&offset=${offset}`),
 }
 
 // ── Creditos ──────────────────────────────────────────────────────────────────
 export const creditosApi = {
-  porCupo:  (cupoId)    => request('GET',  `/creditos/cupo/${cupoId}`),
-  obtener:  (creditoId) => request('GET',  `/creditos/${creditoId}`),
-  cuotas:   (creditoId) => request('GET',  `/creditos/${creditoId}/cuotas`),
+  porCupo:   (cupoId)     => request('GET',  `/creditos/cupo/${cupoId}`),
+  obtener:   (creditoId)  => request('GET',  `/creditos/${creditoId}`),
+  cuotas:    (creditoId)  => request('GET',  `/creditos/${creditoId}/cuotas`),
+  timeline:  (creditoId)  => request('GET',  `/creditos/${creditoId}/timeline`),
+  pago:      (body)       => request('POST', '/creditos/pago',   body),
   compra:   (body)      => request('POST', '/creditos/compra', body),
-  pago:     (body)      => request('POST', '/creditos/pago',   body),
 }
